@@ -161,7 +161,7 @@ class Manager(object):
             elif response.status_code == 500:
                 raise XeroException500(response.text)
 
-            elif response.status_code == 400 or response.status_code == 401:
+            elif response.status_code == 401:
                 payload = parse_qs(response.text)
                 raise XeroBadRequest(
                     payload['oauth_problem'][0],
